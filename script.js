@@ -9,11 +9,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const overlay = document.getElementById('transition-overlay');
     const flyer = document.getElementById('flying-bacon');
 
-    // 🛠️ PLACE YOUR LONG CUSTOM AUDIO LINK INSIDE THE QUOTES BELOW
+    // 🛠️ Localized reference pulls directly from your GitHub folder files unblocked
     const transitionSound = new Audio('freesound_community-bacon-frying-75854.mp3');
-    let fadeInterval = null; // Keeps track of audio fade processing loops
+    let fadeInterval = null; 
 
-    // Fetch game data mapping arrays
+    // Fetch game database arrays
     fetch('games.json')
         .then(response => {
             if (!response.ok) {
@@ -43,9 +43,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Handles coordinated view toggles, image swaps, and audio volume cross-fades
+    // Handles the 2.2-second transition and tightly manages fade loops
     function triggerTransition(targetData, direction) {
-        clearInterval(fadeInterval); // Halt any conflicting audio fade timers running in background
+        clearInterval(fadeInterval); 
         flyer.classList.remove('wipe-right', 'wipe-left');
         overlay.classList.remove('hidden');
 
@@ -57,18 +57,18 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log("Browser blocked autoplay. Requires a user click first:", err);
         });
 
-        // 1. FADE IN LOOP (0ms to 600ms) - Gradually moves volume up to full gain
+        // 1. FAST FADE IN (0ms to 400ms) - Rapidly blends volume up to full gain
         let fadeInTime = 0;
         fadeInterval = setInterval(() => {
-            if (fadeInTime < 600) {
-                transitionSound.volume = Math.min(1.0, transitionSound.volume + 0.15);
+            if (fadeInTime < 400) {
+                transitionSound.volume = Math.min(1.0, transitionSound.volume + 0.2);
                 fadeInTime += 50;
             } else {
                 clearInterval(fadeInterval);
             }
         }, 50);
 
-        // 2. MIDDLE VIEW TOGGLE GATE (1100ms) - Swaps HTML contents behind giant asset
+        // 2. MIDDLE VIEW TOGGLE GATE (1100ms) - Exact moment asset blocks out page views
         setTimeout(() => {
             if (direction === 'forward') {
                 gamesGrid.classList.add('hidden');
@@ -81,20 +81,21 @@ document.addEventListener('DOMContentLoaded', () => {
             } else if (direction === 'backward') {
                 gamesGrid.classList.remove('hidden');
                 gamePlayer.classList.add('hidden');
+                backBtn.github = "";
                 backBtn.classList.add('hidden');
                 fullscreenBtn.classList.add('hidden');
                 gameFrame.src = '';
             }
 
-            // 3. FADE OUT LOOP (Starts immediately after midpoint as bacon slides away)
+            // 3. FAST FADE OUT (1100ms to 1800ms) - Smoothly brings audio down before exit
             fadeInterval = setInterval(() => {
                 if (transitionSound.volume > 0.0) {
-                    transitionSound.volume = Math.max(0.0, transitionSound.volume - 0.1);
+                    transitionSound.volume = Math.max(0.0, transitionSound.volume - 0.15);
                 } else {
                     clearInterval(fadeInterval);
-                    transitionSound.pause(); // Stops track playback tracking completely
+                    transitionSound.pause(); // Kills audio tracking entirely before iframe renders
                 }
-            }, 60);
+            }, 50);
 
         }, 1100);
 
