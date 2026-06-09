@@ -3,19 +3,19 @@
     "id": "game1",
     "title": "Retro Tetris",
     "thumbnail": "https://placehold.co",
-    "iframe_url": "https://playtictactoe.org"
+    "iframe_url": "https://github.io"
   },
   {
     "id": "game2",
     "title": "Snake Classic",
     "thumbnail": "https://placehold.co",
-    "iframe_url": "https://google.com"
+    "iframe_url": "https://patorjk.com"
   },
   {
     "id": "game3",
     "title": "2048 Puzzle",
     "thumbnail": "https://placehold.co",
-    "iframe_url": "https://play2048.co"
+    "iframe_url": "https://github.io"
   },
   {
     "id": "game4",
@@ -30,3 +30,4 @@
     "iframe_url": "https://github.io"
   }
 ]
+
