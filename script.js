@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const gameFrame = document.getElementById('game-frame');
     const gameTitle = document.getElementById('game-title');
     const backBtn = document.getElementById('back-btn');
+    const fullscreenBtn = document.getElementById('fullscreen-btn'); // New element
 
     // Fetch the data from your local JSON file
     fetch('games.json')
@@ -18,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         .catch(error => {
             console.error('Error loading games setup:', error);
-            gamesGrid.innerHTML = '<p style="color: #ff4757;">Error loading games. Make sure you are using a local web server.</p>';
+            gamesGrid.innerHTML = '<p style="color: #ff4757;">Error loading games. Make sure files are committed.</p>';
         });
 
     // Generate individual cards and append them to the main grid
@@ -41,18 +42,31 @@ document.addEventListener('DOMContentLoaded', () => {
         gamesGrid.classList.add('hidden');
         gamePlayer.classList.remove('hidden');
         backBtn.classList.remove('hidden');
+        fullscreenBtn.classList.remove('hidden'); // Show fullscreen button
         
         gameTitle.textContent = game.title;
         gameFrame.src = game.iframe_url;
     }
+
+    // Trigger true browser Fullscreen on the game frame element
+    fullscreenBtn.addEventListener('click', () => {
+        if (gameFrame.requestFullscreen) {
+            gameFrame.requestFullscreen();
+        } else if (gameFrame.webkitRequestFullscreen) { /* Safari support */
+            gameFrame.webkitRequestFullscreen();
+        } else if (gameFrame.msRequestFullscreen) { /* IE11 support */
+            gameFrame.msRequestFullscreen();
+        }
+    });
 
     // Reset layout elements and kill the iframe process
     backBtn.addEventListener('click', () => {
         gamesGrid.classList.remove('hidden');
         gamePlayer.classList.add('hidden');
         backBtn.classList.add('hidden');
+        fullscreenBtn.classList.add('hidden'); // Hide fullscreen button
         
-        // Explicitly clear src to halt game processes or background tracks immediately
         gameFrame.src = '';
     });
 });
+
