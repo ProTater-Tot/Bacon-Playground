@@ -1,33 +1,33 @@
 [
   {
     "id": "game1",
-    "title": "Retro Tetris",
+    "title": "Hole.IO",
     "thumbnail": "https://placehold.co",
-    "iframe_url": "https://github.io"
+    "iframe_url": "https://holeio.com"
   },
   {
     "id": "game2",
-    "title": "Snake Classic",
+    "title": "Gold Digger FRVR",
     "thumbnail": "https://placehold.co",
-    "iframe_url": "https://patorjk.com"
+    "iframe_url": "https://golddigger.frvr.com"
   },
   {
     "id": "game3",
-    "title": "2048 Puzzle",
+    "title": "Gunspin",
     "thumbnail": "https://placehold.co",
-    "iframe_url": "https://github.io"
+    "iframe_url": "https://gun-spin.com"
   },
   {
     "id": "game4",
-    "title": "Flappy Bird",
+    "title": "Minesweeper",
     "thumbnail": "https://placehold.co",
-    "iframe_url": "https://github.io"
+    "iframe_url": "https://minesweeper.com"
   },
   {
     "id": "game5",
-    "title": "Pac-Man",
+    "title": "Kitler",
     "thumbnail": "https://placehold.co",
-    "iframe_url": "https://github.io"
+    "iframe_url": "https://www.catsthatlooklikehitler.com"
   }
 ]
 
