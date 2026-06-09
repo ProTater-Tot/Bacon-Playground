@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const gameFrame = document.getElementById('game-frame');
     const gameTitle = document.getElementById('game-title');
     const backBtn = document.getElementById('back-btn');
-    const fullscreenBtn = document.getElementById('fullscreen-btn'); // New element
+    const fullscreenBtn = document.getElementById('fullscreen-btn');
 
     // Fetch the data from your local JSON file
     fetch('games.json')
@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         .catch(error => {
             console.error('Error loading games setup:', error);
-            gamesGrid.innerHTML = '<p style="color: #ff4757;">Error loading games. Make sure files are committed.</p>';
+            gamesGrid.innerHTML = '<p style="color: #ff4757; font-weight: bold; text-align: center; margin-top: 20px;">Sizzle Error! Could not read your games list.</p>';
         });
 
     // Generate individual cards and append them to the main grid
@@ -42,19 +42,19 @@ document.addEventListener('DOMContentLoaded', () => {
         gamesGrid.classList.add('hidden');
         gamePlayer.classList.remove('hidden');
         backBtn.classList.remove('hidden');
-        fullscreenBtn.classList.remove('hidden'); // Show fullscreen button
+        fullscreenBtn.classList.remove('hidden'); // Only reveals when a game is actively loaded
         
         gameTitle.textContent = game.title;
         gameFrame.src = game.iframe_url;
     }
 
-    // Trigger true browser Fullscreen on the game frame element
+    // Trigger browser Native Fullscreen mode on the game frame
     fullscreenBtn.addEventListener('click', () => {
         if (gameFrame.requestFullscreen) {
             gameFrame.requestFullscreen();
-        } else if (gameFrame.webkitRequestFullscreen) { /* Safari support */
+        } else if (gameFrame.webkitRequestFullscreen) { /* Safari */
             gameFrame.webkitRequestFullscreen();
-        } else if (gameFrame.msRequestFullscreen) { /* IE11 support */
+        } else if (gameFrame.msRequestFullscreen) { /* IE11 */
             gameFrame.msRequestFullscreen();
         }
     });
@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
         gamesGrid.classList.remove('hidden');
         gamePlayer.classList.add('hidden');
         backBtn.classList.add('hidden');
-        fullscreenBtn.classList.add('hidden'); // Hide fullscreen button
+        fullscreenBtn.classList.add('hidden'); // Safely hides the fullscreen asset away again
         
         gameFrame.src = '';
     });
