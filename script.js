@@ -5,6 +5,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const gameTitle = document.getElementById('game-title');
     const backBtn = document.getElementById('back-btn');
     const fullscreenBtn = document.getElementById('fullscreen-btn');
+    
+    // New Transition Elements
+    const overlay = document.getElementById('transition-overlay');
+    const flyer = document.getElementById('flying-bacon');
 
     // Fetch the data from your local JSON file
     fetch('games.json')
@@ -22,7 +26,6 @@ document.addEventListener('DOMContentLoaded', () => {
             gamesGrid.innerHTML = '<p style="color: #ff4757; font-weight: bold; text-align: center; margin-top: 20px;">Sizzle Error! Could not read your games list.</p>';
         });
 
-    // Generate individual cards and append them to the main grid
     function renderGames(games) {
         gamesGrid.innerHTML = '';
         games.forEach(game => {
@@ -32,41 +35,64 @@ document.addEventListener('DOMContentLoaded', () => {
                 <img src="${game.thumbnail}" alt="${game.title}">
                 <p>${game.title}</p>
             `;
-            card.addEventListener('click', () => loadGame(game));
+            card.addEventListener('click', () => triggerTransition(game, 'forward'));
             gamesGrid.appendChild(card);
         });
     }
 
-    // Toggle views and load the requested game into the iframe
-    function loadGame(game) {
-        gamesGrid.classList.add('hidden');
-        gamePlayer.classList.remove('hidden');
-        backBtn.classList.remove('hidden');
-        fullscreenBtn.classList.remove('hidden'); // Only reveals when a game is actively loaded
-        
-        gameTitle.textContent = game.title;
-        gameFrame.src = game.iframe_url;
+    // Handles the coordinated timed transition animation
+    function triggerTransition(targetData, direction) {
+        // Reset old motion classes
+        flyer.classList.remove('wipe-right', 'wipe-left');
+        overlay.classList.remove('hidden');
+
+        if (direction === 'forward') {
+            flyer.classList.add('wipe-right');
+            
+            // Midpoint trigger (600ms) - Swap data while screen is completely covered
+            setTimeout(() => {
+                gamesGrid.classList.add('hidden');
+                gamePlayer.classList.remove('hidden');
+                backBtn.classList.remove('hidden');
+                fullscreenBtn.classList.remove('hidden');
+                
+                gameTitle.textContent = targetData.title;
+                gameFrame.src = targetData.iframe_url;
+            }, 600);
+
+        } else if (direction === 'backward') {
+            flyer.classList.add('wipe-left');
+
+            // Midpoint trigger (600ms) - Hide iframe and bring back store dashboard
+            setTimeout(() => {
+                gamesGrid.classList.remove('hidden');
+                gamePlayer.classList.add('hidden');
+                backBtn.classList.add('hidden');
+                fullscreenBtn.classList.add('hidden');
+                gameFrame.src = '';
+            }, 600);
+        }
+
+        // Full transition animation ends (1200ms) - Hide overlay layer away safely
+        setTimeout(() => {
+            overlay.classList.add('hidden');
+        }, 1200);
     }
 
-    // Trigger browser Native Fullscreen mode on the game frame
+    // Connect Back Button to transition router
+    backBtn.addEventListener('click', () => {
+        triggerTransition(null, 'backward');
+    });
+
+    // Fullscreen Event Handler
     fullscreenBtn.addEventListener('click', () => {
         if (gameFrame.requestFullscreen) {
             gameFrame.requestFullscreen();
-        } else if (gameFrame.webkitRequestFullscreen) { /* Safari */
+        } else if (gameFrame.webkitRequestFullscreen) {
             gameFrame.webkitRequestFullscreen();
-        } else if (gameFrame.msRequestFullscreen) { /* IE11 */
+        } else if (gameFrame.msRequestFullscreen) {
             gameFrame.msRequestFullscreen();
         }
-    });
-
-    // Reset layout elements and kill the iframe process
-    backBtn.addEventListener('click', () => {
-        gamesGrid.classList.remove('hidden');
-        gamePlayer.classList.add('hidden');
-        backBtn.classList.add('hidden');
-        fullscreenBtn.classList.add('hidden'); // Safely hides the fullscreen asset away again
-        
-        gameFrame.src = '';
     });
 });
 
