@@ -7,20 +7,29 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-     <header>
-        <h1>Bacon Playground</h1>
-        <div class="header-buttons">
-            <button id="fullscreen-btn" class="hidden">Go Fullscreen</button>
-            <button id="back-btn" class="hidden">Back to Games</button>
+    <header>
+        <div class="logo-container">
+            <!-- CSS Pan & Bacon Logo Wrapper -->
+            <div class="frying-pan-logo">
+                <div class="pan-handle"></div>
+                <div class="pan-body">
+                    <div class="bacon-strip"></div>
+                    <div class="bacon-strip delay"></div>
+                </div>
+            </div>
+            <h1>Bacon Playground</h1>
         </div>
+        <button id="back-btn" class="hidden">Back to Games</button>
     </header>
-
 
     <main>
         <div id="games-grid" class="games-grid"></div>
 
         <div id="game-player" class="game-player hidden">
-            <h2 id="game-title">Game Title</h2>
+            <div class="game-player-header">
+                <h2 id="game-title">Game Title</h2>
+                <button id="fullscreen-btn" class="hidden">Go Fullscreen</button>
+            </div>
             <div class="iframe-container">
                 <iframe id="game-frame" src="" frameborder="0" allowfullscreen></iframe>
             </div>
@@ -30,3 +39,4 @@
     <script src="script.js"></script>
 </body>
 </html>
+
