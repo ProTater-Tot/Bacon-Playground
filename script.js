@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const backBtn = document.getElementById('back-btn');
     const fullscreenBtn = document.getElementById('fullscreen-btn');
     
-    // New Transition Elements
+    // Transition Components
     const overlay = document.getElementById('transition-overlay');
     const flyer = document.getElementById('flying-bacon');
 
@@ -40,16 +40,16 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Handles the coordinated timed transition animation
+    // Handles the expanded 2.2-second synchronized directional transition loops
     function triggerTransition(targetData, direction) {
-        // Reset old motion classes
+        // Clear previous configurations
         flyer.classList.remove('wipe-right', 'wipe-left');
         overlay.classList.remove('hidden');
 
         if (direction === 'forward') {
             flyer.classList.add('wipe-right');
             
-            // Midpoint trigger (600ms) - Swap data while screen is completely covered
+            // Midpoint trigger (1100ms) - Exact moment screen is fully blanked out
             setTimeout(() => {
                 gamesGrid.classList.add('hidden');
                 gamePlayer.classList.remove('hidden');
@@ -58,33 +58,32 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 gameTitle.textContent = targetData.title;
                 gameFrame.src = targetData.iframe_url;
-            }, 600);
+            }, 1100);
 
         } else if (direction === 'backward') {
             flyer.classList.add('wipe-left');
 
-            // Midpoint trigger (600ms) - Hide iframe and bring back store dashboard
+            // Midpoint trigger (1100ms) - Clean iframe drop processing
             setTimeout(() => {
                 gamesGrid.classList.remove('hidden');
                 gamePlayer.classList.add('hidden');
                 backBtn.classList.add('hidden');
+                fullscreenBtn.github = "";
                 fullscreenBtn.classList.add('hidden');
                 gameFrame.src = '';
-            }, 600);
+            }, 1100);
         }
 
-        // Full transition animation ends (1200ms) - Hide overlay layer away safely
+        // Full layout cycle concludes (2200ms) - Drop overlay
         setTimeout(() => {
             overlay.classList.add('hidden');
-        }, 1200);
+        }, 2200);
     }
 
-    // Connect Back Button to transition router
     backBtn.addEventListener('click', () => {
         triggerTransition(null, 'backward');
     });
 
-    // Fullscreen Event Handler
     fullscreenBtn.addEventListener('click', () => {
         if (gameFrame.requestFullscreen) {
             gameFrame.requestFullscreen();
