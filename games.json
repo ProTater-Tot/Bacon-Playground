@@ -3,18 +3,30 @@
     "id": "game1",
     "title": "Retro Tetris",
     "thumbnail": "https://placehold.co",
-    "iframe_url": "https://example.com/games/tetris"
+    "iframe_url": "https://playtictactoe.org"
   },
   {
     "id": "game2",
     "title": "Snake Classic",
     "thumbnail": "https://placehold.co",
-    "iframe_url": "https://example.com/games/snake"
+    "iframe_url": "https://google.com"
   },
   {
     "id": "game3",
-    "title": "Space Invaders",
+    "title": "2048 Puzzle",
     "thumbnail": "https://placehold.co",
-    "iframe_url": "https://example.com/games/space-invaders"
+    "iframe_url": "https://play2048.co"
+  },
+  {
+    "id": "game4",
+    "title": "Flappy Bird",
+    "thumbnail": "https://placehold.co",
+    "iframe_url": "https://github.io"
+  },
+  {
+    "id": "game5",
+    "title": "Pac-Man",
+    "thumbnail": "https://placehold.co",
+    "iframe_url": "https://github.io"
   }
-] 
+]
