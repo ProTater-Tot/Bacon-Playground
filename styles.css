@@ -6,8 +6,8 @@
 }
 
 body {
-    background-color: #121212;
-    color: #ffffff;
+    background-color: #1a1512; /* Deep Skillet Dark Brown */
+    color: #f5edd7; /* Crispy Eggshell White */
     padding: 20px;
 }
 
@@ -16,27 +16,93 @@ header {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 30px;
-    border-bottom: 2px solid #222;
+    border-bottom: 3px dashed #ffb83d; /* Bacon Grease Gold Dot Border */
     padding-bottom: 15px;
 }
 
-h1 {
-    color: #ff4757;
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
 }
 
+h1 {
+    color: #ffb83d; /* Crispy Yellow Gold */
+    text-shadow: 2px 2px 0px #7a1f1d;
+    font-size: 2rem;
+}
+
+/* --- Dynamic CSS Frying Pan Logo --- */
+.frying-pan-logo {
+    position: relative;
+    width: 50px;
+    height: 50px;
+}
+.pan-body {
+    width: 36px;
+    height: 36px;
+    background-color: #2e2621; /* Cast Iron Base */
+    border: 4px solid #423730;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    overflow: hidden;
+}
+.pan-handle {
+    width: 22px;
+    height: 7px;
+    background-color: #423730;
+    border-radius: 4px;
+    position: absolute;
+    top: 10px;
+    right: 0;
+    transform: rotate(-35deg);
+}
+.bacon-strip {
+    width: 24px;
+    height: 5px;
+    background: linear-gradient(90deg, #ff4757 0%, #ffffff 30%, #ff4757 60%, #ffffff 100%);
+    border-radius: 2px;
+    animation: sizzle 0.3s infinite alternate;
+}
+.bacon-strip.delay {
+    animation-delay: 0.15s;
+    width: 20px;
+}
+@keyframes sizzle {
+    0% { transform: translateY(0) skewX(-5deg); }
+    100% { transform: translateY(1px) skewX(5deg); }
+}
+/* ----------------------------------- */
+
 button {
-    background-color: #ff4757;
+    background-color: #ff4757; /* Sizzling Bacon Red */
     color: white;
     border: none;
     padding: 10px 20px;
-    font-size: 16px;
+    font-size: 14px;
+    font-weight: bold;
     cursor: pointer;
-    border-radius: 5px;
-    transition: background 0.2s;
+    border-radius: 6px;
+    box-shadow: 0 4px 0 #7a1f1d;
+    transition: all 0.1s ease;
 }
 
 button:hover {
-    background-color: #e84118;
+    background-color: #ff6b81;
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 #7a1f1d;
+}
+
+button:active {
+    transform: translateY(4px);
+    box-shadow: none;
 }
 
 .hidden {
@@ -47,34 +113,37 @@ button:hover {
 .games-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-    gap: 20px;
+    gap: 25px;
 }
 
 .game-card {
-    background-color: #1e1e1e;
-    border-radius: 8px;
+    background-color: #2b221a; /* Crispy Brown Card Background */
+    border-radius: 12px;
     overflow: hidden;
     cursor: pointer;
     transition: transform 0.2s, box-shadow 0.2s;
     text-align: center;
-    border: 1px solid #2f3542;
+    border: 2px solid #3d3026;
 }
 
 .game-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(255, 71, 87, 0.3);
+    transform: translateY(-8px);
+    box-shadow: 0 8px 20px rgba(255, 184, 61, 0.2);
+    border-color: #ffb83d;
 }
 
 .game-card img {
     width: 100%;
-    height: 150px;
+    height: 130px;
     object-fit: cover;
+    border-bottom: 2px solid #3d3026;
 }
 
 .game-card p {
-    padding: 12px;
+    padding: 14px;
     font-weight: bold;
-    font-size: 14px;
+    font-size: 15px;
+    color: #f5edd7;
 }
 
 /* Player Layout */
@@ -82,18 +151,36 @@ button:hover {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 15px;
+    gap: 20px;
+    width: 100%;
+}
+
+.game-player-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 800px;
+    background-color: #2b221a;
+    padding: 15px 20px;
+    border-radius: 8px;
+    border: 2px solid #3d3026;
+}
+
+#game-title {
+    color: #ffb83d;
 }
 
 .iframe-container {
     position: relative;
     width: 100%;
     max-width: 800px;
-    height: 550px;
+    height: 500px;
     background-color: #000;
-    border-radius: 8px;
+    border-radius: 12px;
     overflow: hidden;
-    border: 2px solid #333;
+    border: 4px solid #2b221a;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 
 iframe {
