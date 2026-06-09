@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const flyer = document.getElementById('flying-bacon');
 
     // 🛠️ PLACE YOUR LONG CUSTOM AUDIO LINK INSIDE THE QUOTES BELOW
-    const transitionSound = new Audio('Sound Effect by <a href="https://pixabay.com/users/freesound_community-46691455/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=75854">freesound_community</a> from <a href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=75854">Pixabay</a>');
+    const transitionSound = new Audio('freesound_community-bacon-frying-75854.mp3');
     let fadeInterval = null; // Keeps track of audio fade processing loops
 
     // Fetch game data mapping arrays
