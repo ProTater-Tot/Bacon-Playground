@@ -6,65 +6,103 @@
 }
 
 body {
-    background-color: #2b0c10; /* Rich Pork-Belly Dark Crimson Maroon */
-    color: #fff0f2; /* Marbled Fat White Accent Text */
+    background-color: #2b0c10;
+    color: #fff0f2;
     padding: 20px;
     position: relative;
     overflow-x: hidden;
     min-height: 100vh;
 }
 
-/* --- Falling Bacon Background Animation --- */
-.bacon-rain {
+/* ======================================================== */
+/* 🛠️ CUSTOMIZABLE IMAGE SECTION                             */
+/* ======================================================== */
+
+/* 1. FALLING BACKGROUND IMAGES */
+.drop-strip {
+    position: absolute;
+    top: -100px;
+    width: 40px; /* Adjusted size for real image assets */
+    height: 90px;
+    background-image: url('https://www.vhv.rs/dpng/d/11-119460_single-strip-of-bacon-hd-png-download.png'); /* <-- REPLACE WITH FALLING BACON LINK */
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.25;
+    animation: fall linear infinite;
+    pointer-events: none;
+}
+
+/* 2. THE MAIN FRYING PAN HEADER LOGO */
+.frying-pan-logo {
+    width: 65px;
+    height: 65px;
+    background-image: url('https://img.favpng.com/9/1/11/fried-bacon-bacon-in-frying-pan-jynE7QWE_t.jpg'); /* <-- REPLACE WITH FRYING PAN LOGO LINK */
+    background-size: contain;
+    background-repeat: no-repeat;
+    filter: drop-shadow(0px 0px 10px rgba(255, 77, 109, 0.6));
+    transition: transform 0.3s ease;
+}
+.frying-pan-logo:hover {
+    transform: rotate(15deg) scale(1.05);
+}
+
+/* 3. BIG FLYING TRANSITION IMAGE */
+.flying-bacon {
+    position: absolute;
+    width: 250px; /* Big asset sizing */
+    height: 150px;
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRScdnmYKT9Jhc_Nz-vhzf0ViLU36K_MKIgI07_6KYqbx8rsCM:https://images.rawpixel.com/image_png_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDI0LTA3L3dvcmxkZmFjZXNsYWJfcGhvdG9fb2ZfYV9iYWNvbl90b3Bfdmlld19pc29sYXRlZF9vbl93aGl0ZV9iYWNrZ183YjA4MmU5Yi0zYjA3LTRiYmItYTMzNC1lNDBjMmMxY2E3ZjgucG5n.png&s'); /* <-- REPLACE WITH GIANT TRANSITION LINK */
+    background-size: contain;
+    background-repeat: no-repeat;
+    top: calc(50% - 75px);
+}
+
+/* ======================================================== */
+
+/* --- Falling Motion Parameters --- */
+@keyframes fall {
+    0% { transform: translateY(0) rotate(0deg); }
+    100% { transform: translateY(120vh) rotate(360deg); }
+}
+
+/* --- Wipe Transition Layout Layer --- */
+.transition-overlay {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1; /* Keeps animation floating hidden behind everything else */
-    pointer-events: none;
-    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+    background-color: #2b0c10; /* Solid shade matches body to block out grid / iframe views */
+    z-index: 99999; /* Forces layer above absolute everything else */
+    pointer-events: all;
 }
 
-.drop-strip {
-    position: absolute;
-    top: -60px;
-    width: 25px;
-    height: 55px;
-    /* Wavy Red and White Bacon Texture Grid */
-    background: linear-gradient(180deg, 
-        #ff4d6d 0%, #ff4d6d 25%, 
-        #ffffff 25%, #ffffff 50%, 
-        #ff4d6d 50%, #ff4d6d 75%, 
-        #ffffff 75%, #ffffff 100%);
-    border-radius: 4px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-    opacity: 0.15; /* Subdued backdrop effect so it won't distract your eye from games */
-    animation: fall linear infinite;
+/* --- Spin Right Dynamic Animation --- */
+.wipe-right {
+    animation: flyRight 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+@keyframes flyRight {
+    0% { left: -300px; transform: rotate(0deg); }
+    100% { left: 110vw; transform: rotate(720deg); }
 }
 
-@keyframes fall {
-    0% {
-        transform: translateY(0) rotate(0deg) skewX(0deg);
-    }
-    50% {
-        transform: translateY(50vh) rotate(180deg) skewX(10deg);
-    }
-    100% {
-        transform: translateY(110vh) rotate(360deg) skewX(-10deg);
-    }
+/* --- Spin Left Dynamic Animation --- */
+.wipe-left {
+    animation: flyLeft 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
-/* ------------------------------------------- */
+@keyframes flyLeft {
+    0% { right: -300px; transform: rotate(0deg); }
+    100% { right: 110vw; transform: rotate(-720deg); }
+}
 
+/* --- Standard Structural Setup --- */
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 30px;
-    border-bottom: 4px dashed #ff4d6d; /* Sizzling Pink Dashed Divide Line */
+    border-bottom: 4px dashed #ff4d6d;
     padding-bottom: 15px;
-    position: relative;
-    z-index: 10;
 }
 
 .logo-container {
@@ -76,63 +114,11 @@ header {
 h1 {
     color: #fff0f2;
     font-size: 2.5rem;
-    text-shadow: 3px 3px 0px #ff4d6d, 5px 5px 0px #a31d31; /* Layered Bacon Text Effect */
-    letter-spacing: 1px;
+    text-shadow: 3px 3px 0px #ff4d6d, 5px 5px 0px #a31d31;
 }
-
-/* --- Enhanced Stand-out Frying Pan Logo --- */
-.frying-pan-logo {
-    position: relative;
-    width: 70px;
-    height: 70px;
-    filter: drop-shadow(0px 0px 12px rgba(255, 77, 109, 0.8)); /* Sizzling Outer Glow */
-    transform: scale(1.1);
-}
-.pan-body {
-    width: 52px;
-    height: 52px;
-    background-color: #1a1516; /* Heavy Skillet Matte Black */
-    border: 5px solid #362d2f;
-    border-radius: 50%;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 4px;
-    overflow: hidden;
-}
-.pan-handle {
-    width: 32px;
-    height: 10px;
-    background-color: #362d2f;
-    border-radius: 5px;
-    position: absolute;
-    top: 12px;
-    right: 0;
-    transform: rotate(-35deg);
-}
-.logo-bacon {
-    width: 36px;
-    height: 7px;
-    background: linear-gradient(90deg, #ff4d6d 0%, #ffffff 30%, #ff4d6d 60%, #ffffff 100%);
-    border-radius: 2px;
-    animation: sizzle 0.25s infinite alternate linear;
-}
-.logo-bacon.delay {
-    animation-delay: 0.12s;
-    width: 28px;
-}
-@keyframes sizzle {
-    0% { transform: translateY(0) scaleY(0.9) skewX(-4deg); }
-    100% { transform: translateY(1px) scaleY(1.1) skewX(4deg); }
-}
-/* ------------------------------------------- */
 
 button {
-    background: linear-gradient(135deg, #ff4d6d 0%, #c91835 100%); /* Crimson Crispy Shading */
+    background: linear-gradient(135deg, #ff4d6d 0%, #c91835 100%);
     color: white;
     border: none;
     padding: 12px 24px;
@@ -160,17 +146,14 @@ button:active {
     display: none !important;
 }
 
-/* Grid Layout */
 .games-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
     gap: 25px;
-    position: relative;
-    z-index: 10;
 }
 
 .game-card {
-    background-color: rgba(43, 12, 16, 0.85); /* Semi-transparent so background peeks through slightly */
+    background-color: rgba(43, 12, 16, 0.85);
     backdrop-filter: blur(4px);
     border-radius: 14px;
     overflow: hidden;
@@ -200,15 +183,12 @@ button:active {
     color: #fff0f2;
 }
 
-/* Player Layout */
 .game-player {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 20px;
     width: 100%;
-    position: relative;
-    z-index: 10;
 }
 
 .game-player-header {
