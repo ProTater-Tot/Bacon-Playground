@@ -1,0 +1,20 @@
+[
+  {
+    "id": "game1",
+    "title": "Retro Tetris",
+    "thumbnail": "https://placehold.co",
+    "iframe_url": "https://example.com/games/tetris"
+  },
+  {
+    "id": "game2",
+    "title": "Snake Classic",
+    "thumbnail": "https://placehold.co",
+    "iframe_url": "https://example.com/games/snake"
+  },
+  {
+    "id": "game3",
+    "title": "Space Invaders",
+    "thumbnail": "https://placehold.co",
+    "iframe_url": "https://example.com/games/space-invaders"
+  }
+]
