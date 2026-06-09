@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Arcade</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Web Arcade</h1>
+        <button id="back-btn" class="hidden">Back to Games</button>
+    </header>
+
+    <main>
+        <div id="games-grid" class="games-grid"></div>
+
+        <div id="game-player" class="game-player hidden">
+            <h2 id="game-title">Game Title</h2>
+            <div class="iframe-container">
+                <iframe id="game-frame" src="" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
