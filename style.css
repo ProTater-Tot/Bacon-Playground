@@ -15,51 +15,51 @@ body {
 }
 
 /* ======================================================== */
-/* 🛠️ CUSTOMIZABLE IMAGE SECTION                             */
+/* 🛠️ UPGRADED CUSTOMIZABLE IMAGE SECTION                    */
 /* ======================================================== */
 
-/* 1. FALLING BACKGROUND IMAGES */
+/* 1. BIGGER FALLING BACKGROUND IMAGES */
 .drop-strip {
     position: absolute;
-    top: -100px;
-    width: 40px; /* Adjusted size for real image assets */
-    height: 90px;
-    background-image: url('https://www.vhv.rs/dpng/d/11-119460_single-strip-of-bacon-hd-png-download.png'); /* <-- REPLACE WITH FALLING BACON LINK */
+    top: -150px;
+    width: 65px; /* Increased from 40px */
+    height: 140px; /* Increased from 90px */
+    background-image: url('https://www.pngarts.com/files/4/Bacon-PNG-Free-Download.png'); /* <-- REPLACE WITH PNG LINK */
     background-size: contain;
     background-repeat: no-repeat;
-    opacity: 0.25;
+    opacity: 0.20;
     animation: fall linear infinite;
     pointer-events: none;
 }
 
-/* 2. THE MAIN FRYING PAN HEADER LOGO */
+/* 2. BIGGER FRYING PAN HEADER LOGO */
 .frying-pan-logo {
-    width: 65px;
-    height: 65px;
-    background-image: url('https://img.favpng.com/9/1/11/fried-bacon-bacon-in-frying-pan-jynE7QWE_t.jpg'); /* <-- REPLACE WITH FRYING PAN LOGO LINK */
+    width: 100px; /* Increased from 65px */
+    height: 100px; /* Increased from 65px */
+    background-image: url('https://png.pngtree.com/png-clipart/20241007/original/pngtree-crispy-and-delicious-bacon-strips-with-a-perfectly-fried-texture-on-png-image_16243154.png'); /* <-- REPLACE WITH PNG LINK */
     background-size: contain;
     background-repeat: no-repeat;
-    filter: drop-shadow(0px 0px 10px rgba(255, 77, 109, 0.6));
+    filter: drop-shadow(0px 0px 14px rgba(255, 77, 109, 0.7));
     transition: transform 0.3s ease;
 }
 .frying-pan-logo:hover {
     transform: rotate(15deg) scale(1.05);
 }
 
-/* 3. BIG FLYING TRANSITION IMAGE */
+/* 3. MASSIVE FLYING TRANSITION IMAGE */
 .flying-bacon {
     position: absolute;
-    width: 250px; /* Big asset sizing */
-    height: 150px;
-    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRScdnmYKT9Jhc_Nz-vhzf0ViLU36K_MKIgI07_6KYqbx8rsCM:https://images.rawpixel.com/image_png_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDI0LTA3L3dvcmxkZmFjZXNsYWJfcGhvdG9fb2ZfYV9iYWNvbl90b3Bfdmlld19pc29sYXRlZF9vbl93aGl0ZV9iYWNrZ183YjA4MmU5Yi0zYjA3LTRiYmItYTMzNC1lNDBjMmMxY2E3ZjgucG5n.png&s'); /* <-- REPLACE WITH GIANT TRANSITION LINK */
+    width: 450px; /* Increased from 250px */
+    height: 270px; /* Increased from 150px */
+    background-image: url('https://www.pngarts.com/files/4/Bacon-PNG-Free-Download.png'); /* <-- REPLACE WITH PNG LINK */
     background-size: contain;
     background-repeat: no-repeat;
-    top: calc(50% - 75px);
+    top: calc(50% - 135px);
 }
 
 /* ======================================================== */
 
-/* --- Falling Motion Parameters --- */
+/* --- Slower Falling Motion Timer Parameters --- */
 @keyframes fall {
     0% { transform: translateY(0) rotate(0deg); }
     100% { transform: translateY(120vh) rotate(360deg); }
@@ -72,27 +72,27 @@ body {
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: #2b0c10; /* Solid shade matches body to block out grid / iframe views */
-    z-index: 99999; /* Forces layer above absolute everything else */
+    background-color: #2b0c10; 
+    z-index: 99999; 
     pointer-events: all;
 }
 
-/* --- Spin Right Dynamic Animation --- */
+/* --- Slower, Accurate Spin Right Animation --- */
 .wipe-right {
-    animation: flyRight 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    animation: flyRight 2.2s cubic-bezier(0.42, 0, 0.58, 1) forwards; /* Increased time to 2.2 seconds */
 }
 @keyframes flyRight {
-    0% { left: -300px; transform: rotate(0deg); }
-    100% { left: 110vw; transform: rotate(720deg); }
+    0% { left: -500px; transform: rotate(0deg); } /* Starts completely off-screen left */
+    100% { left: 110vw; transform: rotate(1080deg); } /* Extra rotation loops */
 }
 
-/* --- Spin Left Dynamic Animation --- */
+/* --- Slower, Accurate Spin Left Animation --- */
 .wipe-left {
-    animation: flyLeft 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    animation: flyLeft 2.2s cubic-bezier(0.42, 0, 0.58, 1) forwards; /* Increased time to 2.2 seconds */
 }
 @keyframes flyLeft {
-    0% { right: -300px; transform: rotate(0deg); }
-    100% { right: 110vw; transform: rotate(-720deg); }
+    0% { left: 110vw; transform: rotate(0deg); } /* Starts completely off-screen right */
+    100% { left: -500px; transform: rotate(-1080deg); } /* Spins back left */
 }
 
 /* --- Standard Structural Setup --- */
