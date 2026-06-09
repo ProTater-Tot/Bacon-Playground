@@ -5,25 +5,37 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+html, body {
+    /* Prevents horizontal scrollbars entirely when bacon flies off-screen */
+    overflow-x: hidden; 
+    min-height: 100vh;
+}
+
 body {
     background-color: #2b0c10;
     color: #fff0f2;
     padding: 20px;
     position: relative;
-    overflow-x: hidden;
-    min-height: 100vh;
 }
 
-/* ======================================================== */
-/* 🛠️ UPGRADED CUSTOMIZABLE IMAGE SECTION                    */
-/* ======================================================== */
+/* --- Falling Background Animation --- */
+.bacon-rain {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; 
+    pointer-events: none;
+    overflow: hidden; /* Prevents falling pieces from creating vertical scroll jumps */
+}
 
 /* 1. BIGGER FALLING BACKGROUND IMAGES */
 .drop-strip {
     position: absolute;
     top: -150px;
-    width: 65px; /* Increased from 40px */
-    height: 140px; /* Increased from 90px */
+    width: 65px; 
+    height: 140px; 
     background-image: url('https://www.pngarts.com/files/4/Bacon-PNG-Free-Download.png'); /* <-- REPLACE WITH PNG LINK */
     background-size: contain;
     background-repeat: no-repeat;
@@ -34,8 +46,8 @@ body {
 
 /* 2. BIGGER FRYING PAN HEADER LOGO */
 .frying-pan-logo {
-    width: 100px; /* Increased from 65px */
-    height: 100px; /* Increased from 65px */
+    width: 100px; 
+    height: 100px; 
     background-image: url('https://png.pngtree.com/png-clipart/20241007/original/pngtree-crispy-and-delicious-bacon-strips-with-a-perfectly-fried-texture-on-png-image_16243154.png'); /* <-- REPLACE WITH PNG LINK */
     background-size: contain;
     background-repeat: no-repeat;
@@ -49,15 +61,13 @@ body {
 /* 3. MASSIVE FLYING TRANSITION IMAGE */
 .flying-bacon {
     position: absolute;
-    width: 450px; /* Increased from 250px */
-    height: 270px; /* Increased from 150px */
+    width: 450px; 
+    height: 270px; 
     background-image: url('https://www.pngarts.com/files/4/Bacon-PNG-Free-Download.png'); /* <-- REPLACE WITH PNG LINK */
     background-size: contain;
     background-repeat: no-repeat;
     top: calc(50% - 135px);
 }
-
-/* ======================================================== */
 
 /* --- Slower Falling Motion Timer Parameters --- */
 @keyframes fall {
@@ -75,24 +85,25 @@ body {
     background-color: #2b0c10; 
     z-index: 99999; 
     pointer-events: all;
+    overflow: hidden; /* Keeps the giant spinning asset from forcing a scrollbar */
 }
 
 /* --- Slower, Accurate Spin Right Animation --- */
 .wipe-right {
-    animation: flyRight 2.2s cubic-bezier(0.42, 0, 0.58, 1) forwards; /* Increased time to 2.2 seconds */
+    animation: flyRight 2.2s cubic-bezier(0.42, 0, 0.58, 1) forwards; 
 }
 @keyframes flyRight {
-    0% { left: -500px; transform: rotate(0deg); } /* Starts completely off-screen left */
-    100% { left: 110vw; transform: rotate(1080deg); } /* Extra rotation loops */
+    0% { left: -500px; transform: rotate(0deg); } 
+    100% { left: 110vw; transform: rotate(1080deg); } 
 }
 
 /* --- Slower, Accurate Spin Left Animation --- */
 .wipe-left {
-    animation: flyLeft 2.2s cubic-bezier(0.42, 0, 0.58, 1) forwards; /* Increased time to 2.2 seconds */
+    animation: flyLeft 2.2s cubic-bezier(0.42, 0, 0.58, 1) forwards; 
 }
 @keyframes flyLeft {
-    0% { left: 110vw; transform: rotate(0deg); } /* Starts completely off-screen right */
-    100% { left: -500px; transform: rotate(-1080deg); } /* Spins back left */
+    0% { left: 110vw; transform: rotate(0deg); } 
+    100% { left: -500px; transform: rotate(-1080deg); } 
 }
 
 /* --- Standard Structural Setup --- */
