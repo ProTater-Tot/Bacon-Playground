@@ -19,15 +19,27 @@
   },
   {
     "id": "game4",
-    "title": "Minesweeper",
+    "title": "Stickman Hook",
     "thumbnail": "https://placehold.co",
-    "iframe_url": "https://minesweeper.com"
+    "iframe_url": "https://stickmanhookgame.org"
   },
   {
     "id": "game5",
-    "title": "Kitler",
+    "title": "Water Sort Puzzle",
     "thumbnail": "https://placehold.co",
-    "iframe_url": "https://www.catsthatlooklikehitler.com"
+    "iframe_url": "https://watersort.org"
+  },
+  {
+    "id": "game6",
+    "title": "Cookie Clicker",
+    "thumbnail": "https://placehold.co",
+    "iframe_url": "https://cookieclicker.com"
+  },
+  {
+    "id": "game7",
+    "title": "Helix Jump",
+    "thumbnail": "https://placehold.co",
+    "iframe_url": "https://helix-jump.com"
   }
 ]
 
